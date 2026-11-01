@@ -1,0 +1,2294 @@
+/* ============================================
+   PORTFOLIO – GLOBAL STYLES
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --red: #E53429;
+  --red-dark: #C0271D;
+  --red-light: #FF6B5B;
+  --cream: #f5efe0; 
+  --cream-dark: #EDE5CF;
+  --dark-text: #2E1F14;
+  --mid-text: #6B5040;
+  --warm-grey: #8A8070;
+  --accent-gold: #F5C842;
+  --white: #FFFFFF;
+
+  --font-display: 'Lilita One', cursive;
+  --font-body: 'Baloo 2', sans-serif;
+  --font-hand: 'Caveat', cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--dark-text);
+  overflow-x: hidden;
+}
+
+body.detail-open {
+  overflow: hidden;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--accent-gold);
+  outline-offset: 5px;
+}
+
+.page {
+  min-height: 100vh;
+  scroll-margin-top: 70px;
+  position: relative;
+  border-top: 2px solid rgba(229, 52, 41, 0.15);
+}
+
+.page:not(.home-page) {
+  background-color: var(--cream);
+}
+
+.red-text,
+.red-dot {
+  color: var(--red);
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.navbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 40px;
+  background: rgba(245, 239, 224, 0.88);
+  border-bottom: 2px solid rgba(229, 52, 41, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.navbar.scrolled {
+  background: rgba(245, 239, 224, 0.97);
+  box-shadow: 0 2px 20px rgba(229, 52, 41, 0.1);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 38px;
+}
+
+.nav-link {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--red);
+  position: relative;
+  transition: color 0.2s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0;
+  height: 3px;
+  background: var(--red);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--red-dark);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ============================================
+   HOME
+   ============================================ */
+
+.home-page {
+  border-top: 0;
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(229,52,41,0.07), transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(229,52,41,0.05), transparent 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  position: relative;
+  width: 100%;
+  padding: 130px 24px 70px;
+  text-align: center;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 9rem);
+  color: var(--red);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  display: flex;
+  gap: 0.02em;
+  flex-wrap: wrap;
+  justify-content: center;
+  filter: drop-shadow(3px 4px 0 rgba(180, 30, 20, 0.25));
+  user-select: none;
+}
+
+.letter {
+  display: inline-block;
+  animation: letter-pop 0.65s both;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.letter:hover {
+  transform: translateY(-10px) rotate(-4deg) scale(1.12);
+}
+
+.star-letter,
+.star-letter2 {
+  position: relative;
+}
+
+.star-letter::after,
+.star-letter2::after {
+  content: '★';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.28em;
+  color: var(--cream);
+  pointer-events: none;
+}
+
+@keyframes letter-pop {
+  from {
+    opacity: 0;
+    transform: translateY(25px) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+/* HOME BUTTONS */
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  padding: 14px 36px;
+  min-width: 220px;
+  border-radius: 999px;
+  border: 3px solid var(--red-dark);
+  box-shadow: 0 4px 0 var(--red-dark), 0 6px 18px rgba(229,52,41,0.22);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.pill-btn span {
+  transition: transform 0.2s;
+}
+
+.pill-btn:hover {
+  background: var(--red-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 0 #8B1A12, 0 10px 25px rgba(229,52,41,0.3);
+}
+
+.pill-btn:hover span {
+  transform: translate(3px, -3px);
+}
+
+.pill-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--red-dark);
+}
+
+.scroll-hint {
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: var(--warm-grey);
+  animation: floatY 2.5s ease-in-out infinite;
+}
+
+/* ============================================
+   STERREN EN ANIMATIES
+   ============================================ */
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.deco-star {
+  position: absolute;
+  font-family: var(--font-display);
+  color: var(--red);
+  opacity: 0.6;
+  animation: spin-slow 8s linear infinite;
+  pointer-events: auto;
+  transition: color 0.2s;
+}
+
+.deco-star.top-left {
+  top: 80px;
+  left: max(10px, calc(50% - 380px));
+  font-size: 2.5rem;
+}
+
+.deco-star.top-right {
+  top: 90px;
+  right: max(10px, calc(50% - 370px));
+  font-size: 1.8rem;
+  animation-direction: reverse;
+}
+
+.deco-star.bottom-right {
+  bottom: 35px;
+  right: max(10px, calc(50% - 360px));
+  font-size: 2rem;
+}
+
+.deco-star:hover,
+.deco-star-sm:hover,
+.contact-star:hover,
+.detail-star:hover {
+  animation-duration: 0.8s;
+}
+
+/* ============================================
+   ABOUT ME
+   ============================================ */
+
+.about-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  padding: 120px 80px 70px;
+  flex-wrap: wrap;
+}
+
+.about-text-block {
+  flex: 1;
+  min-width: 280px;
+  max-width: 560px;
+}
+
+.about-eyebrow {
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: var(--red);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.about-title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 9vw, 7.5rem);
+  line-height: 1;
+  color: var(--red);
+  margin-bottom: 20px;
+  filter: drop-shadow(2px 3px 0 rgba(180,30,20,0.2));
+}
+
+.about-sub {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.about-body {
+  font-size: 1rem;
+  color: var(--mid-text);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.about-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.tag-pill {
+  display: inline-block;
+  border: 2px solid var(--red);
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.07em;
+  padding: 6px 18px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tag-pill:hover {
+  background: var(--red);
+  color: var(--white);
+}
+
+.about-image-placeholder {
+  flex: 0 0 auto;
+}
+
+.image-box-placeholder {
+  width: 320px;
+  height: 380px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--cream-dark);
+  border: 2px dashed rgba(229,52,41,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--mid-text);
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.image-box-placeholder img {
+  width: 110%;
+  height: 190%;
+  object-fit: cover;
+  display: block;
+  transform: translateX(15px);
+}
+
+.image-box-placeholder:hover {
+  border-color: var(--red);
+  background: rgba(229,52,41,0.05);
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+/* ============================================
+   MY WORK – PROJECTKAARTEN
+   ============================================ */
+
+#page-projects {
+  min-height: 100vh;
+}
+
+
+
+
+.projects-section {
+  min-height: 100vh;
+  padding: 115px 60px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.projects-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  color: var(--red);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  line-height: 1;
+  filter: drop-shadow(2px 3px 0 rgba(180,30,20,0.2));
+}
+
+.deco-star-sm {
+  font-size: 1.5rem;
+  color: var(--red);
+  display: inline-block;
+  animation: spin-slow 6s linear infinite;
+}
+
+.projects-sub {
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: var(--warm-grey);
+  margin-bottom: 50px;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 950px;
+  width: 100%;
+}
+
+/* Kaarten zijn altijd zichtbaar; de fade-in is een losse animatie */
+.work-card {
+  border-radius: 20px;
+  background: var(--cream-dark);
+  border: 2.5px solid rgba(229,52,41,0.2);
+  overflow: hidden;
+  cursor: default;
+  position: relative;
+  animation: card-in 0.5s ease backwards;
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.28s ease,
+    border-color 0.2s;
+}
+
+.work-card:nth-child(2) { animation-delay: 0.08s; }
+.work-card:nth-child(3) { animation-delay: 0.16s; }
+.work-card:nth-child(4) { animation-delay: 0.24s; }
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.work-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(229,52,41,0.06), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.work-card:hover {
+  transform: translateY(-7px) rotate(-0.4deg);
+  box-shadow: 0 20px 50px rgba(229,52,41,0.13), 0 4px 20px rgba(0,0,0,0.06);
+  border-color: var(--red);
+}
+
+.work-card:hover::before {
+  opacity: 1;
+}
+
+.work-card-inner {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 320px;
+  height: 100%;
+}
+
+.work-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.work-number {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--red);
+  letter-spacing: 0.1em;
+}
+
+.work-sparkle {
+  font-size: 1.2rem;
+  color: rgba(229,52,41,0.5);
+  transition: transform 0.4s, color 0.3s;
+}
+
+.work-card:hover .work-sparkle {
+  transform: rotate(45deg) scale(1.4);
+  color: var(--red);
+}
+
+/* My Work: foto in het gestippelde vlak van de kaarten */
+.work-empty-area {
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 0;        /* vlak blijft even groot, wat voor foto je ook neerzet */
+  min-height: 135px;
+}
+
+.work-empty-area img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.work-card:hover .work-empty-area img {
+  transform: scale(1.05);
+}
+
+.work-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.work-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--dark-text);
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+}
+
+.work-tag {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: 0.9rem;
+  color: var(--red);
+  border: 1.5px solid rgba(229,52,41,0.4);
+  padding: 3px 12px;
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.work-card:hover .work-tag {
+  background: var(--red);
+  color: var(--white);
+}
+
+.view-work-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex-shrink: 0;
+  background: var(--red);
+  color: var(--white);
+  border: 2px solid var(--red-dark);
+  border-radius: 999px;
+  padding: 10px 17px;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: 0 3px 0 var(--red-dark);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.view-work-btn span {
+  font-size: 1.1rem;
+  transition: transform 0.2s;
+}
+
+.view-work-btn:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #8B1A12;
+}
+
+.view-work-btn:hover span {
+  transform: translate(2px, -2px);
+}
+
+.view-work-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 var(--red-dark);
+}
+
+/* ============================================
+   CONTACT
+   ============================================ */
+
+.contact-page {
+  overflow: hidden;
+}
+
+.contact-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 135px 40px 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse at 15% 55%, rgba(229,52,41,0.045), transparent 45%),
+    radial-gradient(ellipse at 90% 80%, rgba(229,52,41,0.06), transparent 45%);
+}
+
+.contact-title-wrap {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.contact-eyebrow {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: var(--red);
+  margin-bottom: 8px;
+  animation: floatY 3s ease-in-out infinite;
+}
+
+.contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 11vw, 8rem);
+  line-height: 0.95;
+  color: var(--dark-text);
+  letter-spacing: -0.02em;
+  filter: drop-shadow(2px 3px 0 rgba(180,30,20,0.13));
+}
+
+.contact-title-red {
+  color: var(--red);
+  display: block;
+  position: relative;
+}
+
+.contact-title-dot {
+  display: inline-block;
+  color: var(--red);
+  transform: rotate(8deg);
+}
+
+.contact-star {
+  position: absolute;
+  color: var(--red);
+  display: inline-block;
+  line-height: 1;
+  opacity: 0.65;
+  animation: spin-slow 7s linear infinite;
+  pointer-events: auto;
+}
+
+.contact-star-one {
+  top: 29%;
+  left: 15%;
+  font-size: 3.2rem;
+}
+
+.contact-star-two {
+  top: 23%;
+  right: 17%;
+  font-size: 2.4rem;
+  animation-direction: reverse;
+}
+
+.contact-star-three {
+  top: 52%;
+  left: 8%;
+  font-size: 2.8rem;
+  animation-duration: 9s;
+}
+
+.contact-star-four {
+  top: 58%;
+  right: 10%;
+  font-size: 3.5rem;
+  animation-direction: reverse;
+}
+
+.contact-star-five {
+  top: 74%;
+  left: 29%;
+  font-size: 1.9rem;
+  animation-duration: 5s;
+}
+
+.contact-star-six {
+  top: 78%;
+  right: 29%;
+  font-size: 2.2rem;
+  animation-direction: reverse;
+}
+
+/* ============================================
+   PROJECT DETAILPAGINA'S
+   ============================================ */
+
+.work-detail {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 90% 65%, rgba(229,52,41,0.055), transparent 48%),
+    var(--cream);
+  animation: detail-appear 0.3s ease both;
+}
+
+@keyframes detail-appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Transparante, vaste balk met terugknop */
+
+.detail-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  min-height: 82px;
+  padding: 17px 5%;
+  display: flex;
+  align-items: center;
+  background: rgba(245,239,224,0.84);
+  border-bottom: 1px solid rgba(229,52,41,0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  justify-content: space-between;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  background: transparent;
+  border: 0;
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  cursor: pointer;
+  padding: 8px 12px 8px 0;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.back-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 40px;
+  border-radius: 13px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 1.8rem;
+  line-height: 1;
+  box-shadow: 0 4px 0 var(--red-dark);
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+   display: inline-block;
+  transform: rotate(-15deg);
+  transition: transform 0.25s ease;
+}
+
+.back-button:hover .back-arrow {
+  transform: rotate(-15deg) translateX(-3px);
+}
+
+.back-button:hover {
+  color: var(--red-dark);
+  transform: translateX(-3px);
+}
+
+.back-button:hover .back-arrow {
+  background: var(--red-dark);
+  transform: translateX(-3px);
+  box-shadow: 0 4px 0 #ffc8c4;
+}
+
+.back-button:active .back-arrow {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--red-dark);
+}
+
+/* Content over de hele paginabreedte (zelfde marge als de topbar) */
+
+.detail-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin: 0 auto;
+  padding: 36px 5% 90px;
+}
+
+.detail-project {
+  width: 100%;
+  animation: detail-appear 0.35s ease both;
+}
+
+/* Brede afbeelding, niet te hoog */
+
+.detail-image-strip {
+   position: relative;
+  width: 75%;
+  height: 500px;
+  margin: 0 auto;
+  background: rgba(237,229,207,0.58);
+  border: 2px solid rgba(229,52,41,0.18);
+  border-radius: 24px;
+  box-shadow: 0 10px 0 rgba(229,52,41,0.07);
+  overflow: hidden;
+}
+
+
+.detail-image-strip img {
+  width: 90%;
+  height: 107%;
+  object-fit: contain;
+  transform: scale(0.7);
+  display: block;
+}
+
+/* Groot, speels projectnummer */
+
+.detail-number {
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1;
+  color: var(--red);
+  transform: rotate(-7deg);
+  filter: drop-shadow(4px 5px 0 rgba(180,30,20,0.12));
+  user-select: none;
+}
+
+.detail-number-dot {
+  color: var(--red-dark);
+}
+
+/* Leeg tekstvlak onder de afbeelding, ook over de hele breedte */
+
+.detail-text-block {
+   position: relative;
+  width: 75%;
+  min-height: 320px;
+  margin: 30px auto 0;
+  padding: 40px;
+  background: rgba(237,229,207,0.58);
+  border: 2px solid rgba(229,52,41,0.18);
+  border-radius: 20px;
+  box-shadow: 0 10px 0 rgba(229,52,41,0.07);
+  color: #e53429;
+  }
+
+/* Drie kleinere fotovakjes */
+
+.detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+  margin-top: 40px;
+  max-width: 1260px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.detail-thumb {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: center;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.detail-thumb:hover {
+  transform: translateY(-6px) rotate(-0.6deg);
+}
+
+.detail-thumb-img {
+  aspect-ratio: 1 / 1;
+  background: var(--cream-dark);
+  border: 2.5px solid rgba(229,52,41,0.25);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  transition: border-color 0.2s, box-shadow 0.28s;
+}
+
+.detail-thumb:hover .detail-thumb-img {
+  border-color: var(--red);
+  box-shadow: 0 16px 36px rgba(229,52,41,0.14);
+}
+
+.detail-thumb-img span {
+  opacity: 0.35;
+}
+
+.detail-thumb-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-thumb h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: var(--dark-text);
+}
+
+.detail-thumb p {
+  font-size: 0.9rem;
+  color: var(--mid-text);
+  line-height: 1.4;
+}
+
+/* Terugknop onderaan */
+
+.detail-bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+}
+
+/* Decoratieve sterren op de detailpagina */
+
+.detail-star {
+  position: fixed;
+  z-index: 1;
+  color: var(--red);
+  opacity: 0.4;
+  font-size: 2.3rem;
+  pointer-events: auto;
+  animation: spin-slow 8s linear infinite;
+}
+
+.detail-star-one {
+  top: 34%;
+  right: 3%;
+}
+
+.detail-star-two {
+  bottom: 12%;
+  left: 3%;
+  animation-direction: reverse;
+}
+
+.detail-star-three {
+  top: 75%;
+  right: 4%;
+  font-size: 1.7rem;
+  animation-duration: 6s;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--red);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--red-dark);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 18px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .hero-content {
+    padding: 115px 20px 65px;
+    gap: 25px;
+  }
+
+  .hero-title {
+    font-size: clamp(3.2rem, 12vw, 6rem);
+  }
+
+  .deco-star.top-left {
+    top: 65px;
+    left: 15px;
+    font-size: 1.8rem;
+  }
+
+  .deco-star.top-right {
+    top: 70px;
+    right: 18px;
+    font-size: 1.5rem;
+  }
+
+  .deco-star.bottom-right {
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+  }
+
+  .about-hero {
+    flex-direction: column-reverse;
+    padding: 115px 24px 50px;
+    gap: 36px;
+  }
+
+  .about-text-block {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .image-box-placeholder {
+    width: min(260px, 80vw);
+    height: 300px;
+  }
+
+  .projects-section {
+    padding: 110px 24px 60px;
+  }
+
+  .projects-header {
+    gap: 12px;
+  }
+
+  .projects-sub {
+    margin-bottom: 32px;
+  }
+
+  .works-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    gap: 22px;
+  }
+
+  .work-card-inner {
+    min-height: 300px;
+  }
+
+  .contact-section {
+    padding: 130px 22px 50px;
+  }
+
+  .contact-title {
+    font-size: clamp(3.8rem, 15vw, 6rem);
+  }
+
+  .contact-star-one {
+    left: 8%;
+    top: 32%;
+    font-size: 2.3rem;
+  }
+
+  .contact-star-two {
+    right: 8%;
+    top: 25%;
+    font-size: 1.8rem;
+  }
+
+  .contact-star-three {
+    left: 5%;
+    top: 58%;
+    font-size: 2rem;
+  }
+
+  .contact-star-four {
+    right: 5%;
+    top: 62%;
+    font-size: 2.4rem;
+  }
+
+  .contact-star-five {
+    left: 18%;
+    top: 78%;
+  }
+
+  .contact-star-six {
+    right: 18%;
+    top: 80%;
+  }
+
+  .detail-topbar {
+    min-height: 70px;
+    padding: 12px 20px;
+  }
+
+  .back-button {
+    font-size: 0.95rem;
+    gap: 10px;
+  }
+
+  .back-arrow {
+    width: 40px;
+    height: 37px;
+    font-size: 1.6rem;
+  }
+
+  .detail-content {
+    padding: 28px 18px 70px;
+  }
+
+  .detail-image-strip {
+    height: clamp(200px, 55vw, 300px);
+    border-radius: 18px;
+  }
+
+  .detail-number {
+    top: 30px;
+    left: 14px;
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+
+  .detail-text-block {
+    min-height: 150px;
+    padding: 24px;
+    margin-top: 22px;
+  }
+
+  .detail-gallery {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .detail-star-one {
+    right: 1%;
+    font-size: 1.7rem;
+  }
+
+  .detail-star-two {
+    left: 1%;
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-links {
+    gap: 13px;
+  }
+
+  .nav-link {
+    font-size: 0.82rem;
+  }
+
+  .work-card-bottom {
+    align-items: flex-start;
+  }
+
+  .view-work-btn {
+    padding: 9px 12px;
+    font-size: 0.78rem;
+  }
+
+  .projects-title {
+    font-size: 2.8rem;
+  }
+
+  .detail-content {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+}
+
+/* Respecteer gebruikers die minder animatie willen */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* Alleen de hoofdfoto van Werk 1 */
+.detail-project[data-detail="1"] .detail-image-strip img {
+   width: 100%;
+  height: 670px;
+  object-fit: contain;
+  display: block;
+  margin: 0px auto;
+  transform: translateY(-90px);
+
+}
+
+.detail-project[data-detail="1"] .detail-gallery .detail-thumb:nth-child(3) .detail-thumb-img img {
+  width: 200%;
+  height: 100%;
+  object-fit: contain;
+  margin: auto;
+}
+
+.software-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: 45px auto;
+}
+
+.software-button {
+  display: inline-block;
+  padding: 14px 28px;
+  background-color: var(--red);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  border: 2px solid var(--red);
+  border-radius: 8px 18px 8px 18px;
+  box-shadow: 4px 5px 0 rgba(180, 30, 20, 0.18);
+  cursor: default;
+  user-select: none;
+  transition: transform 0.25s ease;
+}
+
+.software-button:nth-child(1) {
+  transform: rotate(-4deg);
+}
+
+.software-button:nth-child(2) {
+  transform: rotate(4deg);
+}
+
+.software-button:nth-child(1):hover {
+  transform: rotate(-1deg) translateY(-4px);
+}
+
+.software-button:nth-child(2):hover {
+  transform: rotate(1deg) translateY(-4px);
+}
+
+.detail-project[data-detail="1"] .software-buttons {
+  width: 100%;
+  display: flex !important;
+  flex-direction: row;
+  justify-content: center !important;
+  align-items: center;
+  gap: 22px;
+  margin: 45px 0 !important;
+  padding: 0;
+  box-sizing: border-box;
+  transform: none;
+}
+
+
+
+.work-name {
+  font-family: "Arial", sans-serif;
+}
+
+.work-tag {
+  font-family: var(--font-display);
+}
+
+.number-decoration {
+  display: inline-block;
+  color: var(--red);
+  font-size: 0.75em;
+  transform: rotate(15deg);
+  margin-left: 3px;
+}
+
+
+/* ============================================
+   WISSELEN TUSSEN DE WERKEN (vorige / volgende)
+   ============================================ */
+
+.detail-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.detail-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 40px;
+  border: 0;
+  border-radius: 13px;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  line-height: 1;
+  padding-bottom: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 var(--red-dark);
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.detail-nav-btn:hover {
+  background: var(--red-dark);
+  box-shadow: 0 4px 0 #8B1A12;
+}
+
+.detail-nav-btn[data-prev]:hover {
+  transform: translateX(-3px);
+}
+
+.detail-nav-btn[data-next]:hover {
+  transform: translateX(3px);
+}
+
+.detail-nav-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--red-dark);
+}
+
+.detail-counter {
+  min-width: 52px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  color: var(--red);
+}
+
+@media (max-width: 768px) {
+  .detail-nav {
+    gap: 10px;
+  }
+
+  .detail-nav-btn {
+    width: 40px;
+    height: 37px;
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-label {
+    display: none;
+  }
+
+  .detail-counter {
+    min-width: 40px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Werk 3: 3 vakjes met de NS-app schermen */
+.detail-project[data-detail="3"] .detail-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 75%;
+  max-width: none;
+}
+
+.detail-project[data-detail="3"] .detail-thumb-img {
+  background: #EDE5CF;
+  aspect-ratio: 3 / 4;
+}
+
+.detail-project[data-detail="3"] .detail-thumb-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .detail-project[data-detail="3"] .detail-gallery {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+/* My Work: foto in het gestippelde vlak van de kaarten */
+.work-empty-area {
+  position: relative;
+  overflow: hidden;
+}
+
+.work-empty-area img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.4s ease;
+  border-radius: 20px;
+  
+
+}
+
+.work-card:hover .work-empty-area img {
+  transform: scale(1.03);
+  border-radius: 20px;
+}
+
+
+/* CONTACT ME - compacter en dezelfde stijl als PORTFOLIO */
+
+.contact-section {
+    min-height: 75vh;
+    padding: 110px 24px 45px;
+    justify-content: center;
+}
+
+.contact-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1;
+    color: var(--red);
+    letter-spacing: -0.01em;
+    filter: drop-shadow(3px 4px 0 rgba(180, 30, 20, 0.25));
+}
+
+.contact-email {
+    margin-top: 22px;
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    color: var(--dark-text);
+    text-align: center;
+}
+
+.contact-email a {
+    color: var(--red);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-email a:hover {
+    color: var(--red-dark);
+    text-decoration: underline;
+}
+
+/* =========================================
+   CONTACT ME — COMPACT & PROFESSIONEEL
+   ========================================= */
+
+.contact-page {
+    overflow: hidden;
+}
+
+.contact-section {
+    min-height: 0;
+    height: 72vh;
+    max-height: 680px;
+    padding: 115px 24px 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background:
+        radial-gradient(
+            ellipse at 15% 50%,
+            rgba(229, 52, 41, 0.06),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 85% 75%,
+            rgba(229, 52, 41, 0.07),
+            transparent 45%
+        );
+}
+
+.contact-title-wrap {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 680px);
+    padding: 38px 28px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.35);
+    border: 2px solid rgba(229, 52, 41, 0.2);
+    border-radius: 24px;
+    box-shadow: 6px 7px 0 rgba(192, 39, 29, 0.08);
+}
+
+/* Titel in dezelfde stijl als PORTFOLIO */
+
+.contact-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--red);
+    filter: drop-shadow(
+        3px 4px 0 rgba(180, 30, 20, 0.18)
+    );
+}
+
+/* E-mailadres */
+
+.contact-email {
+    margin-top: 24px;
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--dark-text);
+}
+
+.contact-email a {
+    display: inline-block;
+    margin-top: 5px;
+    color: var(--red);
+    font-weight: 700;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: color 0.2s ease;
+}
+
+.contact-email a:hover {
+    color: var(--red-dark);
+    text-decoration: underline;
+}
+
+/* Kleine decoratieve sterretjes */
+
+.contact-star {
+    pointer-events: none;
+    opacity: 0.55;
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        height: auto;
+        min-height: 65vh;
+        max-height: none;
+        padding: 105px 20px 45px;
+    }
+
+    .contact-title-wrap {
+        padding: 32px 18px;
+        border-radius: 18px;
+    }
+
+    .contact-title {
+        font-size: clamp(2.7rem, 11vw, 4.5rem);
+    }
+
+    .contact-email {
+        font-size: 1rem;
+    }
+}
+/* Contactpagina daadwerkelijk kleiner maken */
+.page.contact-page {
+    min-height: 0;
+    height: auto;
+}
+
+.contact-page .contact-section {
+    min-height: 0;
+    height: auto;
+    max-height: none;
+    padding: 120px 24px 100px;
+    justify-content: center;
+}
+
+/* Achtergrondkleur van alle 4 My Work-vakjes */
+#page-projects .work-card {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.projects-sub {
+    color: var(--red);
+}
+
+/* Afbeelding 1: iets groter */
+section.detail-project[data-detail="2"] .detail-thumb:nth-child(1) .detail-thumb-img img {
+      transform: none !important;
+    width: 95% !important;
+    height: 95% !important;
+    object-fit: contain !important;
+}
+
+/* Afbeelding 2: het hele vakje vullen */
+section.detail-project[data-detail="2"] .werk2-afbeelding-2 {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center;
+}
+
+/* Afbeelding 3: het hele vakje vullen */
+section.detail-project[data-detail="2"] .werk2-afbeelding-3 {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center;
+}
+
+
+/* Alleen de afbeelding van werk 4 groter maken */
+.detail-image-strip img[src="images/Naamloos-2.png"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
+    transform: scale(1.0) translateY(-30px);
+}
+
+.detail-image-strip img[src="images/Naamloos-2.png"] {
+    display: block;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    object-fit: cover;
+}
+
+/* ============================================
+   TITEL VAN DE CHALLENGE (midden in de topbar)
+   ============================================ */
+
+.detail-title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.detail-title-text {
+  display: inline-block;
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  transform: rotate(-2deg);
+}
+
+.detail-title-text.pop {
+  animation: titlePop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+.detail-title-star {
+  color: var(--red);
+  font-size: 1.3rem;
+  animation: titleTwinkle 2.4s ease-in-out infinite;
+}
+
+.detail-title-star:last-child {
+  animation-delay: 1.2s;
+}
+
+@keyframes titlePop {
+  0%   { transform: rotate(-8deg) scale(0.6); opacity: 0; }
+  100% { transform: rotate(-2deg) scale(1);   opacity: 1; }
+}
+
+@keyframes titleTwinkle {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50%      { transform: scale(1.35) rotate(25deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-title-text.pop,
+  .detail-title-star {
+    animation: none;
+  }
+}
+
+/* Op kleinere schermen komt de titel op een eigen regel onder de knoppen */
+@media (max-width: 1100px) {
+  .detail-topbar {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+
+  .detail-title {
+    position: static;
+    transform: none;
+    order: 3;
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  .detail-title-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* ============================================
+   KLEINE TAGS ONDER DE TEKST (in het tekstvlak)
+   ============================================ */
+
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.detail-tags .tag-pill {
+  font-size: 0.72rem;
+  padding: 4px 14px;
+  cursor: default;
+  user-select: none;
+}
+
+/* Video in het hoofdvlak (werk 2) */
+.detail-image-strip video,
+.detail-image-strip iframe {
+  position: absolute;
+  top: 64px;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  width: calc(100% - 48px);
+  height: calc(100% - 88px);
+  border: 0;
+  border-radius: 16px;
+  background: #2E1F14;
+  object-fit: contain;
+  transform: none;
+}
+
+/* ============================================
+   WERK 3: HOOFDVLAK MET TELEFOON, CIRKEL EN STICKERS
+   ============================================ */
+
+.werk3-hero {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.werk3-blob {
+  position: absolute;
+  height: 82%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: rgba(229, 52, 41, 0.12);
+  border: 2px dashed rgba(229, 52, 41, 0.4);
+  animation: spin-slow 40s linear infinite;
+}
+
+.detail-project[data-detail="3"] .detail-image-strip .werk3-phone {
+  position: relative;
+  width: auto !important;
+  height: 90% !important;
+  object-fit: contain !important;
+  transform: rotate(-4deg) !important;
+  filter: drop-shadow(8px 12px 0 rgba(180, 30, 20, 0.15));
+  display: block;
+}
+
+.werk3-sticker {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 8px 22px;
+  border-radius: 999px;
+  user-select: none;
+}
+
+.werk3-sticker-1 {
+  left: 20%;
+  top: 30%;
+  background: var(--red);
+  color: var(--white);
+  border: 2px solid var(--red-dark);
+  box-shadow: 0 4px 0 var(--red-dark);
+  transform: rotate(-7deg);
+}
+
+.werk3-sticker-2 {
+  right: 20%;
+  bottom: 28%;
+  background: var(--white);
+  color: var(--red);
+  border: 2px solid var(--red);
+  box-shadow: 0 4px 0 rgba(192, 39, 29, 0.25);
+  transform: rotate(6deg);
+}
+
+.werk3-spark {
+  position: absolute;
+  color: var(--red);
+  opacity: 0.6;
+  animation: spin-slow 8s linear infinite;
+}
+
+.werk3-spark-1 { left: 12%; bottom: 20%; font-size: 2.2rem; }
+.werk3-spark-2 { right: 12%; top: 18%; font-size: 1.8rem; animation-direction: reverse; }
+.werk3-spark-3 { left: 33%; top: 14%; font-size: 1.3rem; }
+
+@media (max-width: 768px) {
+  .werk3-sticker,
+  .werk3-spark-3 {
+    display: none;
+  }
+}
+
+/* Werk 1: het losgeknipte blikje */
+.detail-project[data-detail="1"] .detail-image-strip .werk1-can {
+  position: relative;
+  width: auto !important;
+  height: 90% !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  transform: rotate(5deg) !important;
+  filter: drop-shadow(8px 12px 0 rgba(180, 30, 20, 0.15));
+  display: block;
+}
+
+
+/* Werk 4: vakjes iets breder, afbeelding past volledig erin */
+.detail-project[data-detail="4"] .detail-thumb-img {
+  background: #EDE5CF;
+  aspect-ratio: 4 / 3;
+}
+
+.detail-project[data-detail="4"] .detail-thumb-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.detail-gallery figcaption h4 {
+  color: #E53429;
+}
+
+.detail-gallery figcaption p {
+  color: #C0271D;
+}
+
+/* ============================================
+   BURG BURG SLIDESHOW
+   ============================================ */
+
+.detail-project[data-detail="4"] .burgburg-slider {
+  width: 100%;
+  max-width: 1260px;
+  margin: 40px auto 0;
+}
+
+/* Het gedeelte waarin de vakjes zichtbaar zijn */
+.detail-project[data-detail="4"] .burgburg-slider-window {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* De rij met alle vijf vakjes */
+.detail-project[data-detail="4"] .burgburg-gallery {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  gap: 26px;
+
+  transition: transform 0.55s cubic-bezier(0.22, 0.75, 0.25, 1);
+  will-change: transform;
+}
+
+/* Drie vakjes tegelijkertijd zichtbaar */
+.detail-project[data-detail="4"] .burgburg-gallery .detail-thumb {
+  flex: 0 0 calc((100% - 52px) / 3);
+  min-width: 0;
+}
+
+/* De pijl onder de vakjes */
+.detail-project[data-detail="4"] .burgburg-slider-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+/* De knop zelf */
+.burgburg-slide-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* De rode speelse pijl */
+.burgburg-slide-arrow .back-arrow {
+  width: 45px;
+  height: 40px;
+  border-radius: 13px;
+
+  background: var(--red);
+  color: var(--white);
+
+  font-size: 1.8rem;
+  line-height: 1;
+
+  box-shadow: 0 4px 0 var(--red-dark);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: rotate(-15deg);
+
+  transition:
+    transform 0.25s ease,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+/* Hover-effect */
+.burgburg-slide-arrow:hover .back-arrow {
+  background: var(--red-dark);
+  transform: translateX(3px) rotate(-15deg);
+  box-shadow: 0 4px 0 #ffc8c4;
+}
+
+/* Klik-effect */
+.burgburg-slide-arrow:active .back-arrow {
+  transform: translateY(2px) rotate(-15deg);
+  box-shadow: 0 1px 0 var(--red-dark);
+}
+
+/* Toegankelijkheid */
+.burgburg-slide-arrow:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 5px;
+  border-radius: 14px;
+}
+
+/* Mobiele versie */
+@media (max-width: 768px) {
+
+  .detail-project[data-detail="4"] .burgburg-gallery {
+    gap: 18px;
+  }
+
+  .detail-project[data-detail="4"] .burgburg-gallery .detail-thumb {
+    flex-basis: calc((100% - 18px) / 2);
+  }
+
+  .detail-project[data-detail="4"] .burgburg-slider-controls {
+    margin-top: 22px;
+  }
+
+}
+
+
+/* ============================================
+   MY WORK — PAGINERING VOOR VIJF WERKEN
+   ============================================ */
+
+/* De grid bevat voortaan aparte pagina's */
+#page-projects .works-grid {
+  display: block;
+  width: 100%;
+  max-width: 950px;
+}
+
+/* Vier werken op de eerste pagina */
+#page-projects .works-page {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  width: 100%;
+  animation: works-page-in 0.4s ease both;
+}
+
+/* Verberg de inactieve pagina */
+#page-projects .works-page[hidden] {
+  display: none !important;
+}
+
+/* Animatie bij het wisselen van pagina */
+@keyframes works-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navigatie onder de werkkaarten */
+.works-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 38px;
+}
+
+/* Rode, speelse navigatiepijl */
+.works-page-arrow {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 54px;
+  height: 48px;
+
+  background: var(--red);
+  color: var(--white);
+
+  border: 2px solid var(--red-dark);
+  border-radius: 14px;
+
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 0 var(--red-dark);
+
+  transform: rotate(-5deg);
+
+  transition:
+    transform 0.25s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.works-page-arrow:hover {
+  background: var(--red-dark);
+  transform: translateY(-3px) rotate(-5deg);
+  box-shadow: 0 7px 0 #8B1A12;
+}
+
+.works-page-arrow:active {
+  transform: translateY(2px) rotate(-5deg);
+  box-shadow: 0 1px 0 var(--red-dark);
+}
+
+.works-page-arrow:focus-visible {
+  outline: 3px solid var(--accent-gold);
+  outline-offset: 5px;
+}
+
+/* Pagina-indicator */
+.works-page-indicator {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  text-align: center;
+  min-width: 65px;
+}
+
+/* De vijfde kaart krijgt dezelfde breedte als de andere kaarten */
+#page-projects .works-page .work-card {
+  min-width: 0;
+  width: 100%;
+}
+
+/* Op mobiel blijft alles netjes onder elkaar */
+@media (max-width: 768px) {
+  #page-projects .works-page {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 22px;
+  }
+
+  .works-pagination {
+    margin-top: 30px;
+  }
+
+  .works-page-arrow {
+    width: 48px;
+    height: 44px;
+    font-size: 1.8rem;
+  }
+}
+
+/* ============================================
+   WERK 5: PRO WEBSITE
+   ============================================ */
+
+/* Alleen de hoofdafbeelding groter: vlak blijft zoals bij de andere werken,
+   de afbeelding vult het hele vlak (geen rand meer eromheen) */
+.detail-project[data-detail="5"] .detail-image-strip img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* zet op "contain" als je niets wilt afsnijden */
+  object-position: center top;
+  border-radius: 0;
+  transform: none;
+}
+
+/* Drie vakjes met screenshots: niets afsnijden */
+.detail-project[data-detail="5"] .detail-thumb-img {
+  background: #EDE5CF;
+  aspect-ratio: 4 / 3;
+}
+
+.detail-project[data-detail="5"] .detail-thumb-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Werk 5: alleen de afbeelding in het 1e kleine vakje (prowebsite3).
+   De hele afbeelding blijft zichtbaar, niets wordt afgesneden. */
+.detail-project[data-detail="5"] .detail-gallery .detail-thumb:nth-child(1) .detail-thumb-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Werk 5: alleen de afbeelding in het 2e kleine vakje (prowebsite2).
+   Het vakje zelf blijft even groot, de afbeelding is iets groter. */
+.detail-project[data-detail="5"] .detail-gallery .detail-thumb:nth-child(2) .detail-thumb-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(1.12);
+}
+
+@media (max-width: 768px) {
+  .detail-project[data-detail="5"] .detail-image-strip img {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Werk 5: alleen het 3e kleine vakje (prowebsite4) */
+.detail-project[data-detail="5"] .detail-gallery .detail-thumb:nth-child(3) .detail-thumb-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+}
+
+/* Burg Burg: afbeelding in vakje 5 (Research, Museum Visit) iets groter */
+.detail-project[data-detail="4"] .burgburg-gallery .detail-thumb:nth-child(5) .detail-thumb-img img {
+  transform: scale(1.1);
+}
+
+/* Naam onder de titel op de home page */
+.hero-name {
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  color: var(--red);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-top: -6px;
+}
